@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>Meditation Timer by Brian Nicholls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,19 +15,58 @@
   <body>
 
     <div style="padding: 30px;">
+      <table>
+        <tbody>
+          <tr>
+            <td>
 
-      <label>Inhale/Exhale interval in seconds:</label>
-      <input type="number" id="interval" placeholder='7' />
+              <label>Inhale/Exhale interval in seconds:</label>
+            </td>
+            <td>
+
+              <input type="number" id="intervalInput" placeholder='7' />
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+
+              <button style="width: 100%;" type="submit" id="startButton" >Start Timer</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="font-size: 0.9em; justify-content: center; display: flex;" colspan="2">
+              <label>Selected Sound:&nbsp;</label>
+              <select value="1">
+                <option value="1">Glockenspiel</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <br /><br />
 
-      <button type="submit" id="startButton" >Start Timer</button>
       
       <br /><br /><br />
 
       <h1></h1>
-      
+
+
     </div>
+
+    <div id="info">
+      <p></p>
+    </div>
+
+    <footer style="padding: 30px; font-size: 0.9em;">
+      <cite>For feedback, sound requests, and other inquiries: <a target="_blank" href="mailto: nichol88@gmail.com">Contact the author</a></cite>
+      
+      <br /><br />
+      
+      <cite><a target="_blank" href="https://github.com/briannicholls/briannicholls.github.io">View this project on GitHub</a></cite>
+    </footer>
 
     <audio id='Exhale'><source src='./sounds/glock.mp3' type='audio/mpeg'></audio>
 
