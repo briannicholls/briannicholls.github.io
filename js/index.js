@@ -4,32 +4,29 @@ let TIMER = null
 
 window.onload = () => {
 
+  // get DOM nodes
   const startButton = document.querySelector('button')
-  const input = document.querySelector('input')
+  const input = document.getElementById('intervalInput')
+  const h1 = document.querySelector('h1')
+  const audio = document.querySelector('audio')
 
-  document.querySelector('button').addEventListener('click', () => {
-    // toggle start timer
-    if (TIMER_RUNNING) {
-      stopTimer()
-    } else {
-      startTimer()
-    }
-    console.log('Timer running: ', TIMER_RUNNING)
-  })
+  // add button submit function
+  document.querySelector('button').addEventListener('click', toggleTimer)
   
+  // add input onChange function
   document.querySelector('input').addEventListener('change', (e) => {
     // update interval
     INTERVAL = e.target.value
-    console.log('interval: ', INTERVAL)
   })
   
   const runLoop = () => {
-    document.querySelector('h1').innerHTML = 'Get ready! Exhale...'
     const interval = parseInt(INTERVAL, 10) * 1000
-    let audio = document.querySelector('audio')
-    let h1 = document.querySelector('h1')
+
+    h1.innerHTML = 'Get ready! Exhale...'
+    
     let toggle = true
   
+    // main loop
     TIMER = setInterval(() => {
       if (!TIMER_RUNNING) {
         return
@@ -57,9 +54,19 @@ window.onload = () => {
   const stopTimer = () => {
     TIMER_RUNNING = false
     clearInterval(TIMER)
-    document.querySelector('button').innerHTML = 'Start Timer'
-    document.querySelector('h1').innerHTML = ''
+    startButton.innerHTML = 'Start Timer'
+    h1.innerHTML = ''
     input.disabled = false
+  }
+
+  const toggleTimer = () => {
+    // toggle start timer
+    if (TIMER_RUNNING) {
+      stopTimer()
+    } else {
+      startTimer()
+    }
+    console.log('Timer running: ', TIMER_RUNNING)
   }
 
   
