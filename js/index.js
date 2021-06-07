@@ -16,7 +16,7 @@ window.onload = () => {
     const intervalMilliseconds = parseInt(INTERVAL, 10) * 1000
 
     // initialize game before main loop
-    let breath = 'Exhale'
+    let breath = 'Inhale'
     
     // set to TIMER global var so we can stop it later
     // main loop function
