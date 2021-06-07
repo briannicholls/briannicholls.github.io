@@ -1,5 +1,17 @@
 * {
   box-sizing: border-box;
+  
+}
+
+body {
+  background: none;
+}
+
+html {
+  /* background: #6186FF; */
+/* background: -moz-linear-gradient(top, #6186FF 0%, #1C6EA4 50%, #3563C5 100%);
+background: -webkit-linear-gradient(top, #6186FF 0%, #1C6EA4 50%, #3563C5 100%);
+background: linear-gradient(to bottom, #6186FF 0%, #1C6EA4 50%, #3563C5 100%); */
 }
 
 td {
@@ -9,3 +21,12 @@ td {
 button {
   padding: 10px;
 }
+
+h1 {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+

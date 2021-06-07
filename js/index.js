@@ -3,71 +3,72 @@ let INTERVAL = 7
 let TIMER = null
 
 window.onload = () => {
-
   // get DOM nodes
   const startButton = document.querySelector('button')
-  const input = document.getElementById('intervalInput')
-  const h1 = document.querySelector('h1')
-  const audio = document.querySelector('audio')
+  const input       = document.getElementById('intervalInput')
+  const h1          = document.querySelector('h1')
+  const audio       = document.querySelector('audio')
+  const unessentials = document.querySelectorAll('.hide-during-game')
 
-  // add button submit function
-  document.querySelector('button').addEventListener('click', toggleTimer)
-  
-  // add input onChange function
-  document.querySelector('input').addEventListener('change', (e) => {
-    // update interval
-    INTERVAL = e.target.value
-  })
-  
+  // begin main loop
   const runLoop = () => {
-    const interval = parseInt(INTERVAL, 10) * 1000
+    // calculate game interval based on current value, then begin game
+    const intervalMilliseconds = parseInt(INTERVAL, 10) * 1000
 
-    h1.innerHTML = 'Get ready! Exhale...'
+    // initialize game before main loop
+    let breath = 'Exhale'
     
-    let toggle = true
-  
-    // main loop
+    // set to TIMER global var so we can stop it later
+    // main loop function
     TIMER = setInterval(() => {
-      if (!TIMER_RUNNING) {
-        return
-      }
+      // check if user stopped process
+      if (!TIMER_RUNNING) { return; };
+      h1.innerHTML = breath   // set display text
+      audio.play();           // play audio
+      console.log(new Date()) // time stamp
 
-      const breath = toggle ? 'Inhale' : 'Exhale'
-  
-      h1.innerHTML = breath
-      
-      audio.play();
-      console.log(new Date())
-      
-      toggle = !toggle
-     }, interval)
-  
+      breath = breath === 'Exhale' ? 'Inhale' : 'Exhale' // toggle breath var
+     }, intervalMilliseconds)
   }
 
   const startTimer = () => {
-    TIMER_RUNNING = true
-    startButton.innerHTML = 'Stop Timer'
-    input.disabled = true
-    runLoop()
+    TIMER_RUNNING = true  // set global var
+    startButton.innerHTML = 'Stop Timer' // set display text
+    input.disabled = true                // disable input
+    h1.innerHTML = 'Get ready, Exhale...'
+    // hide unessential items
+    unessentials.forEach(element => {
+      element.classList.add('hide')
+    });
+    
+    runLoop() // begin main loop
   }
 
   const stopTimer = () => {
-    TIMER_RUNNING = false
-    clearInterval(TIMER)
-    startButton.innerHTML = 'Start Timer'
-    h1.innerHTML = ''
-    input.disabled = false
+    TIMER_RUNNING = false // set global var
+    clearInterval(TIMER)  // stop main loop
+    startButton.innerHTML = 'Start Timer' // toggle button display text
+    h1.innerHTML = ''       // clear main display text
+    input.disabled = false  // enable input
+
+    // show unessential items
+    unessentials.forEach(element => {
+      element.classList.remove('hide')
+    });
   }
 
-  const toggleTimer = () => {
+  const toggleTimer = (e) => {
     // toggle start timer
-    if (TIMER_RUNNING) {
-      stopTimer()
-    } else {
-      startTimer()
-    }
-    console.log('Timer running: ', TIMER_RUNNING)
+    TIMER_RUNNING ? stopTimer() : startTimer()
   }
 
+  // add button submit function
+  startButton.addEventListener('click', toggleTimer)
+  
+  // add input onChange function
+  input.addEventListener('change', (e) => {
+    // update interval
+    INTERVAL = e.target.value
+  })
   
 }

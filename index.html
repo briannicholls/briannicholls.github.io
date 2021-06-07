@@ -13,29 +13,28 @@
   </head>
 
   <body>
-
     <div style="padding: 30px;">
       <table>
         <tbody>
-          <tr>
+          <!-- USER INPUT ROW -->
+          <tr class="hide-during-game">
             <td>
-
               <label>Inhale/Exhale interval in seconds:</label>
             </td>
             <td>
-
               <input type="number" id="intervalInput" placeholder='7' />
             </td>
           </tr>
 
+          <!-- BUTTON ROW -->
           <tr>
             <td colspan="2">
-
               <button style="width: 100%;" type="submit" id="startButton" >Start Timer</button>
             </td>
           </tr>
 
-          <tr>
+          <!-- SOUND SELECTION ROW -->
+          <tr class="hide-during-game">
             <td style="font-size: 0.9em; justify-content: center; display: flex;" colspan="2">
               <label>Selected Sound:&nbsp;</label>
               <select value="1">
@@ -47,12 +46,10 @@
       </table>
 
       <br /><br />
+      <br /><br />
 
-      
-      <br /><br /><br />
-
+      <!-- MAIN TEXT -->
       <h1></h1>
-
 
     </div>
 
@@ -60,7 +57,7 @@
       <p></p>
     </div>
 
-    <footer style="padding: 30px; font-size: 0.9em;">
+    <footer style="padding: 30px; font-size: 0.9em;" class="hide-during-game">
       <cite>For feedback, sound requests, and other inquiries: <a target="_blank" href="mailto: nichol88@gmail.com">Contact the author</a></cite>
       
       <br /><br />
