@@ -67,7 +67,6 @@ window.onload = () => {
   
   // add input onChange function
   input.addEventListener('change', (e) => {
-
     let value = parseInt(e.target.value, 10)
 
     // audio file doesn't work if delay is less than 6 seconds
@@ -77,6 +76,9 @@ window.onload = () => {
     
     // update interval
     INTERVAL = value
+
+    // make sure input reflects interval
+    input.value = value
   })
   
 }
