@@ -13,7 +13,7 @@ window.onload = () => {
   // begin main loop
   const runLoop = () => {
     // calculate game interval based on current value, then begin game
-    const intervalMilliseconds = parseInt(INTERVAL, 10) * 1000
+    const intervalMilliseconds = INTERVAL * 1000
 
     // initialize game before main loop
     let breath = 'Inhale'
@@ -67,8 +67,16 @@ window.onload = () => {
   
   // add input onChange function
   input.addEventListener('change', (e) => {
+
+    let value = parseInt(e.target.value, 10)
+
+    // audio file doesn't work if delay is less than 6 seconds
+    if (value < 6) {
+      value = 6
+    }
+    
     // update interval
-    INTERVAL = e.target.value
+    INTERVAL = value
   })
   
 }
